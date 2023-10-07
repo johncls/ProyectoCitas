@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, React  } from "react";
 import { Container, Row, Col, Card, CardHeader, CardBody, Button } from "reactstrap";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import TablaContacto from "./componentes/contacto";
 import ModalContacto from "./componentes/ModalContacto";
 
@@ -55,7 +56,7 @@ const App = () => {
             },
             body: JSON.stringify(contacto),
         })
-        console.log('respuesta', JSON.stringify(contacto));
+
         if (response.ok) {
             setMostrarModal(!mostrarModal);
             mostrarContacto();
@@ -81,7 +82,31 @@ const App = () => {
         }
     }
     return (
+         
         <Container>
+            {/*<Router>*/}
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <div className="container">
+                    <a className="navbar-brand" href="/">Citas Medicas</a>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <a className="nav-link" href="/">Contacto</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/perfil">Perfil</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+                {/*<Route path="/" exact component={TablaContacto} />*/}
+               {/* <Route path="/perfil" component={Perfil} />*/}
+           {/* </Router>*/}
             <Row className="mt-5">
                 <Col sm="12">
                     <Card>
