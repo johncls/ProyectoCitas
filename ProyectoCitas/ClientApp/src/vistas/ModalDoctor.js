@@ -1,7 +1,7 @@
 ﻿import { useEffect, useState } from "react";
 import { Modal, ModalHeader, ModalBody, Form, FormGroup, Label, ModalFooter, Button, Input } from "reactstrap";
 
-const modeloContacto = {
+const modeloDoctor = {
     id:0,
     nombre: "",
     direccion: "",
@@ -11,35 +11,35 @@ const modeloContacto = {
     identificacion: "",
 }
 
-const ModalContacto = ({ mostrarModal, setMostrarModal, guardarContacto, editar, setEditar, editarContacto}) => {
+const ModalDoctor = ({ mostrarModal, setMostrarModal, guardarDoctor, editar, setEditar, editarDoctor}) => {
 
-    const [contacto, setContacto] = useState(modeloContacto);
+    const [doctor, setDoctor] = useState(modeloDoctor);
 
     const actualizarDato = (e) => {
         console.log(e.target.name + ":" + e.target.value);
-        setContacto(
+        setDoctor(
             {
-                ...contacto,
+                ...doctor,
                 [e.target.name]: e.target.value
             }
         )
     }
 
     const enviarDatos = () => {
-        if (contacto.Id == 0) {
-            guardarContacto(contacto)
+        if (doctor.id == 0) {
+            guardarDoctor(doctor)
         } else {
-            editarContacto(contacto)
+            editarDoctor(doctor)
         }
 
-        setContacto(modeloContacto)
+        setDoctor(modeloDoctor)
     }
 
     useEffect(() => {
         if (editar != null) {
-            setContacto(editar)
+            setDoctor(editar)
         } else {
-            setContacto(modeloContacto)
+            setDoctor(modeloDoctor)
         }
     }, [editar])
 
@@ -51,34 +51,33 @@ const ModalContacto = ({ mostrarModal, setMostrarModal, guardarContacto, editar,
 
         <Modal isOpen={mostrarModal}>
             <ModalHeader>
-                {contacto.Id == 0 ? "Nuevo Contacto":"Editar Contacto"}
-                Nuevo Contacto
+                {doctor.id == 0 ? "Nuevo Doctor":"Editar Doctor"}
             </ModalHeader>
             <ModalBody>
                 <Form>
                     <FormGroup>
                         <Label>Nombre</Label>
-                        <Input name="nombre" onChange={(e) => actualizarDato(e)} value={ contacto.nombre} />
+                        <Input name="nombre" onChange={(e) => actualizarDato(e)} value={ doctor.nombre} />
                     </FormGroup>
                     <FormGroup>
                         <Label>Direcciòn</Label>
-                        <Input name="direccion" onChange={(e) => actualizarDato(e)} value={contacto.direccion} />
+                        <Input name="direccion" onChange={(e) => actualizarDato(e)} value={doctor.direccion} />
                     </FormGroup>
                     <FormGroup>
                         <Label>Telefono</Label>
-                        <Input name="telefono" onChange={(e) => actualizarDato(e)} value={ contacto.telefono}/>
+                        <Input name="telefono" onChange={(e) => actualizarDato(e)} value={ doctor.telefono}/>
                     </FormGroup>
                     <FormGroup>
                         <Label>Correo</Label>
-                        <Input name="correo" onChange={(e) => actualizarDato(e)} value={contacto.correo} />
+                        <Input name="correo" onChange={(e) => actualizarDato(e)} value={doctor.correo} />
                     </FormGroup>
                     <FormGroup>
                         <Label>Constraseña</Label>
-                        <Input name="constraseña" onChange={(e) => actualizarDato(e)} value={contacto.constraseña} />
+                        <Input name="constraseña" onChange={(e) => actualizarDato(e)} value={doctor.constraseña} />
                     </FormGroup>
                     <FormGroup>
                         <Label>identificacion</Label>
-                        <Input name="identificacion" onChange={(e) => actualizarDato(e)} value={contacto.identificacion} />
+                        <Input name="identificacion" onChange={(e) => actualizarDato(e)} value={doctor.identificacion} />
                     </FormGroup>
 
                 </Form>
@@ -92,4 +91,4 @@ const ModalContacto = ({ mostrarModal, setMostrarModal, guardarContacto, editar,
         )
 }
 
-export default ModalContacto;
+export default ModalDoctor;
