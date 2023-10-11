@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace ProyectoCitas.Models;
 
@@ -47,13 +45,9 @@ public partial class DbcitasMedicasContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false);
 
-            entity.HasOne(d => d.IdDoctorNavigation).WithMany(p => p.Cita)
-                .HasForeignKey(d => d.IdDoctor)
-                .HasConstraintName("FK_Cita_Doctor");
+            entity.HasOne(d => d.Doctor).WithMany(p => p.Cita);
 
-            entity.HasOne(d => d.IdPacienteNavigation).WithMany(p => p.Cita)
-                .HasForeignKey(d => d.IdPaciente)
-                .HasConstraintName("FK_Cita_Contacto");
+            entity.HasOne(d => d.Contacto).WithMany(p => p.Cita);
         });
 
         modelBuilder.Entity<Contacto>(entity =>

@@ -25,6 +25,15 @@ namespace ProyectoCitas.Controllers
             return StatusCode(StatusCodes.Status200OK, listaContacto);
         }
 
+        [HttpGet]
+        [Route("GetDoctor")]
+        public async Task<IActionResult> GetDoctor()
+        {
+            var listaContacto = await _dbcontext.Doctors.OrderByDescending(c => c.Id).ToListAsync();
+
+            return StatusCode(StatusCodes.Status200OK, listaContacto);
+        }
+
         [HttpPost]
         [Route("GuardarDoctor")]
         public async Task<IActionResult> GuardarDoctor([FromBody] Doctor request)

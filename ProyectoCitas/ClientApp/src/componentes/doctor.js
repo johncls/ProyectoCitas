@@ -99,7 +99,7 @@ const DoctorLogic = () => {
                             mostrarModal={mostrarModal}
                             setMostrarModal={setMostrarModal}
 
-                            eliminarContacto={eliminarDoctor}
+                            eliminarDoctor={eliminarDoctor}
                         />
                     </CardBody>
                 </Card>

@@ -19,7 +19,7 @@ public partial class Cita
 
     public DateTime? FechaCreacion { get; set; }
 
-    public virtual Doctor? IdDoctorNavigation { get; set; }
+    public virtual Doctor? Doctor { get; set; }
 
-    public virtual Contacto? IdPacienteNavigation { get; set; }
+    public virtual Contacto? Contacto { get; set; }
 }
